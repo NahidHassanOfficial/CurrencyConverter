@@ -1,6 +1,5 @@
 //first part of the api to fetch current rate
-let currencyAPI =
-  "https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies";
+let currencyAPI = "https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies";
 
 let selectDropdown = document.querySelectorAll("select");
 let button = document.querySelector("button");
@@ -48,13 +47,10 @@ button.addEventListener("click", (evt) => {
 
 swapArrow.addEventListener("click", () => {
   // Swap the selected options
-  [currencyFrom.selectedIndex, currencyTo.selectedIndex] = [
-    currencyTo.selectedIndex,
-    currencyFrom.selectedIndex,
-  ];
+  [currencyFrom.selectedIndex, currencyTo.selectedIndex] = [currencyTo.selectedIndex, currencyFrom.selectedIndex];
 
-  updateFlag(currencyFrom.parentElement.querySelector("img"),currencyFrom.value);
-  updateFlag(currencyTo.parentElement.querySelector("img"), currencyTo.value);
+  currencyFrom.dispatchEvent(new Event("change"));
+  currencyTo.dispatchEvent(new Event("change"));
 });
 
 const updateExchangeRate = async () => {
@@ -77,5 +73,10 @@ const updateExchangeRate = async () => {
 };
 
 window.addEventListener("load", () => {
+  //update the default flag during refresh
+  //but this function delays to update flag onload.
+  // selectDropdown.forEach((select) => {
+  //   select.dispatchEvent(new Event("change"));
+  // });
   updateExchangeRate();
 });
