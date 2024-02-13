@@ -6,6 +6,7 @@ This is a simple currency converter web application built using HTML, CSS, and J
 
 - Convert currency from one currency to another.
 - Real-time exchange rate updates.
+- Swap selected currency to get exchange rate.
 - Simple and intuitive user interface.
 
 ## Technologies Used

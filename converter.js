@@ -7,7 +7,6 @@ let button = document.querySelector("button");
 let currencyFrom = document.querySelector(".from");
 let currencyTo = document.querySelector(".to");
 let swapArrow = document.querySelector("i");
-let countryFrom, countryTo;
 
 for (let select of selectDropdown) {
   let option, currency;
@@ -16,11 +15,13 @@ for (let select of selectDropdown) {
     option.innerText = currency;
     option.value = currency;
 
+    //intializing default currency on window refresh
     if (select.name == "from" && currency == "USD") {
       option.selected = true;
     } else if (select.name == "to" && currency == "BDT") {
       option.selected = true;
     }
+
     select.append(option);
   }
 
@@ -32,11 +33,12 @@ for (let select of selectDropdown) {
   });
 }
 
+//updating the country flag with realtime exchange rate
 const updateFlag = (img, currency) => {
-  console.log(currency);
   let country = countryList[currency];
   let src = `https://flagsapi.com/${country}/flat/64.png`;
   img.src = src;
+  updateExchangeRate();
 };
 
 button.addEventListener("click", (evt) => {
@@ -45,8 +47,14 @@ button.addEventListener("click", (evt) => {
 });
 
 swapArrow.addEventListener("click", () => {
-  updateFlag(img, selectedOption.value);
-  updateExchangeRate();
+  // Swap the selected options
+  [currencyFrom.selectedIndex, currencyTo.selectedIndex] = [
+    currencyTo.selectedIndex,
+    currencyFrom.selectedIndex,
+  ];
+
+  updateFlag(currencyFrom.parentElement.querySelector("img"),currencyFrom.value);
+  updateFlag(currencyTo.parentElement.querySelector("img"), currencyTo.value);
 });
 
 const updateExchangeRate = async () => {
