@@ -19,6 +19,6 @@ This is a simple currency converter web application built using HTML, CSS, and J
 
 The application utilizes the following API to fetch real-time currency exchange rates:
 
-[Currency Conversion API](https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/eur/bdt.json)
+[Currency Conversion API](https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/usd.json)
 
 ![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://github.com/NahidHassanOfficial/CurrencyConverter)
