@@ -1,12 +1,12 @@
 body {
-  background-color: lightblue;
+  background-color: #ececec;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 }
 
 .container-main {
+  margin-top: 150px;
   height: 350px;
   width: 300px;
   background-color: white;
